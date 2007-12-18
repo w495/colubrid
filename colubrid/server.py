@@ -67,11 +67,19 @@ def execute(app=None, debug=True, hostname='localhost', port=8080,
     except ImportError:
         try:
             from BaseWSGIServer import WSGIServer
-            run = WSGIServer(app, hostname, port).serve_forever
+            def serve():
+                s = WSGIServer(app, hostname, port)
+                s.serve_forever()
+            run = serve
+#            run = WSGIServer(app, hostname, port).serve_forever
         except ImportError:
             try:
                 from wsgiref.simple_server import make_server
-                run = make_server(hostname, port, app).serve_forever
+                def serve():
+                    s = make_server(hostname, port, app)
+                    s.serve_forever()
+#                run = make_server(hostname, port, app).serve_forever
+                run = serve
             except ImportError:
                 run = None
     if run is None:

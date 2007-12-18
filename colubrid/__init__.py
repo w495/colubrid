@@ -26,7 +26,7 @@ Documentation can be found on `the homepage`_.
 
 .. _the homepage: http://wsgiarea.pocoo.org/colubrid/documentation/
 """
-__version__ = '0.10'
+__version__ = '0.10.1'
 __author__  = 'Armin Ronacher <armin.ronacher@active-4.com>'
 __license__ = 'BSD License'
 
